@@ -1,0 +1,27 @@
+KVER=$(shell uname -r)
+LIB_TARGET=libcfw002.so
+LIB_HEADER=libcfw002.h
+API_HEADER=cfw002_api.h
+API_INSTALL_PATH=/lib/modules/$(KVER)/iCubDrivers/cfw002/LinuxDriver/API
+
+all: $(API_HEADER) libcfw002.c $(LIB_HEADER)
+	gcc -O2 -fPIC -c libcfw002.c -o libcfw002.o
+	ld -shared -o $(LIB_TARGET) -lc libcfw002.o
+
+clean:
+	rm -f libcfw002.so
+	rm -f *.a
+	rm -f *.o
+
+install: $(LIB_TARGET)
+	# API
+	mkdir -p $(API_INSTALL_PATH)
+	cp $(LIB_HEADER) $(API_INSTALL_PATH)/
+	cp $(API_HEADER) $(API_INSTALL_PATH)/
+	cp $(LIB_TARGET) $(API_INSTALL_PATH)/
+	ln -sf $(API_INSTALL_PATH)/$(LIB_TARGET) /usr/lib/$(LIB_TARGET)
+
+uninstall:
+	# API
+	rm -rf $(API_INSTALL_PATH)	
+	rm /usr/lib/$(LIB_TARGET)

@@ -2,15 +2,17 @@
 Holds sources for the cfw002 Linux device drivers.
 
 ## How to build
-Just enter the src directory and type
-	make all
+Just enter the `src` directory and type
+`make all`
 this will compie the module, the API, the firmware and the tests
-If you want to compile only one of the above part, execute the make command in the corresponfind subdirectory
+
+If you want to compile only one of the above part, execute the make command in the corresponfind subdirectory.
 
 ## INSTALLATION
 Use
 `make install`
 as superuser
+
 The make script will install the following files:
 * Firmware
 `/lib/firmware/cfw002_fw.bin`

@@ -4,9 +4,11 @@ LIB_HEADER=libcfw002.h
 API_HEADER=cfw002_api.h
 API_INSTALL_PATH=/lib/modules/$(KVER)/iCubDrivers/cfw002/LinuxDriver/API
 
-all: $(API_HEADER) libcfw002.c $(LIB_HEADER)
-	gcc -O2 -fPIC -c libcfw002.c -o libcfw002.o
+all: libcfw002.o
 	ld -shared -o $(LIB_TARGET) -lc libcfw002.o
+
+libcfw002.o: $(API_HEADER) libcfw002.c $(LIB_HEADER)
+	gcc -O2 -fPIC -c libcfw002.c -o libcfw002.o
 
 clean:
 	rm -f libcfw002.so

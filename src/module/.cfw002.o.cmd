@@ -1,8 +1,8 @@
-cmd_/home/matteo/cfw002/src/module/cfw002.o :=  gcc-4.6 -Wp,-MD,/home/matteo/cfw002/src/module/.cfw002.o.d  -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.6/include -I/usr/src/linux-headers-3.2.0-4-common/arch/x86/include -Iarch/x86/include/generated -Iinclude  -I/usr/src/linux-headers-3.2.0-4-common/include -include /usr/src/linux-headers-3.2.0-4-common/include/linux/kconfig.h   -I/home/matteo/cfw002/src/module -D__KERNEL__ -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -m64 -mtune=generic -mno-red-zone -mcmodel=kernel -funit-at-a-time -maccumulate-outgoing-args -fstack-protector -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_FXSAVEQ=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -Wframe-larger-than=2048 -Wno-unused-but-set-variable -fomit-frame-pointer -fno-var-tracking-assignments -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -I/usr/src/linux-headers-3.2.0-4-common/drivers/ -Idrivers/  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(cfw002)"  -D"KBUILD_MODNAME=KBUILD_STR(cfw002)" -c -o /home/matteo/cfw002/src/module/.tmp_cfw002.o /home/matteo/cfw002/src/module/cfw002.c
+cmd_/data/cfw002/src/module/cfw002.o :=  gcc-4.6 -Wp,-MD,/data/cfw002/src/module/.cfw002.o.d  -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.6/include -I/usr/src/linux-headers-3.2.0-4-common/arch/x86/include -Iarch/x86/include/generated -Iinclude  -I/usr/src/linux-headers-3.2.0-4-common/include -include /usr/src/linux-headers-3.2.0-4-common/include/linux/kconfig.h   -I/data/cfw002/src/module -D__KERNEL__ -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -Os -m64 -mtune=generic -mno-red-zone -mcmodel=kernel -funit-at-a-time -maccumulate-outgoing-args -fstack-protector -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_FXSAVEQ=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -Wframe-larger-than=2048 -Wno-unused-but-set-variable -fomit-frame-pointer -fno-var-tracking-assignments -g -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -DCC_HAVE_ASM_GOTO  -I/usr/src/linux-headers-3.2.0-4-common/drivers/ -Idrivers/  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(cfw002)"  -D"KBUILD_MODNAME=KBUILD_STR(cfw002)" -c -o /data/cfw002/src/module/.tmp_cfw002.o /data/cfw002/src/module/cfw002.c
 
-source_/home/matteo/cfw002/src/module/cfw002.o := /home/matteo/cfw002/src/module/cfw002.c
+source_/data/cfw002/src/module/cfw002.o := /data/cfw002/src/module/cfw002.c
 
-deps_/home/matteo/cfw002/src/module/cfw002.o := \
+deps_/data/cfw002/src/module/cfw002.o := \
     $(wildcard include/config/pm.h) \
   include/linux/version.h \
   /usr/src/linux-headers-3.2.0-4-common/include/linux/init.h \
@@ -745,12 +745,12 @@ deps_/home/matteo/cfw002/src/module/cfw002.o := \
     $(wildcard include/config/mgeode/lx.h) \
   /usr/src/linux-headers-3.2.0-4-common/include/asm-generic/module.h \
   /usr/src/linux-headers-3.2.0-4-common/include/trace/events/module.h \
-  /home/matteo/cfw002/src/module/cfw002.h \
-  /home/matteo/cfw002/src/module/cfw002_hw.h \
+  /data/cfw002/src/module/cfw002.h \
+  /data/cfw002/src/module/cfw002_hw.h \
   /usr/src/linux-headers-3.2.0-4-common/include/linux/debugfs.h \
     $(wildcard include/config/debug/fs.h) \
-  /home/matteo/cfw002/src/module/debug.h \
+  /data/cfw002/src/module/debug.h \
 
-/home/matteo/cfw002/src/module/cfw002.o: $(deps_/home/matteo/cfw002/src/module/cfw002.o)
+/data/cfw002/src/module/cfw002.o: $(deps_/data/cfw002/src/module/cfw002.o)
 
-$(deps_/home/matteo/cfw002/src/module/cfw002.o):
+$(deps_/data/cfw002/src/module/cfw002.o):

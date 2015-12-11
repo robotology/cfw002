@@ -5,7 +5,9 @@ MODULE_TARGET=cfw002.ko
 
 obj-m := cfw002.o
 
-all: cfw002.c cfw002.h cfw002_hw.h debug.h
+all:  cfw002.o
+
+cfw002.o: cfw002.c cfw002.h cfw002_hw.h debug.h
 	$(MAKE) -C $(KSRC) M=$(PWD) modules
 
 help:

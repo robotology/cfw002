@@ -1,1 +1,1 @@
-cmd_/home/matteo/cfw002/src/module/cfw002.ko := ld -r -m elf_x86_64 -T /usr/src/linux-headers-3.2.0-4-common/scripts/module-common.lds --build-id  -o /home/matteo/cfw002/src/module/cfw002.ko /home/matteo/cfw002/src/module/cfw002.o /home/matteo/cfw002/src/module/cfw002.mod.o
+cmd_/data/cfw002/src/module/cfw002.ko := ld -r -m elf_x86_64 -T /usr/src/linux-headers-3.2.0-4-common/scripts/module-common.lds --build-id  -o /data/cfw002/src/module/cfw002.ko /data/cfw002/src/module/cfw002.o /data/cfw002/src/module/cfw002.mod.o

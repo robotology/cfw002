@@ -1,4 +1,4 @@
-# cfw002
+# CFW002
 Holds sources for the cfw002 Linux device drivers.
 
 ## How to build
@@ -8,7 +8,7 @@ this will compie the module, the API, the firmware and the tests
 
 If you want to compile only one of the above part, execute the make command in the corresponfind subdirectory.
 
-## INSTALLATION
+## Installation
 Use
 `make install`
 as superuser
@@ -28,10 +28,10 @@ The make script will install the following files:
 where
 `KVER=$(shell uname -r)`
 	
-## USAGE
+## Usage
 load at starup the script S20_cfw002.sh
 
-## UNINSTALLATION
+## Uninstallation
 Use
 `make uninstall`
 as superuser

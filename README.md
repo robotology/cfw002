@@ -15,17 +15,26 @@ as superuser
 
 The make script will install the following files:
 * Firmware
+
 `/lib/firmware/cfw002_fw.bin`
+
 * Module
+
 `/lib/modules/$(KVER)/iCubDrivers/cfw002/LinuxDriver/cfw002_fw.bin`
+
 * API
+
 `/lib/modules/$(KVER)/iCubDrivers/cfw002/LinuxDriver/API/cfw002_api.h
 /lib/modules/$(KVER)/iCubDrivers/cfw002/LinuxDriver/API/libcfw002.h
 /lib/modules/$(KVER)/iCubDrivers/cfw002/LinuxDriver/API/libcfw002.so
 /usr/lib/libcfw002.so`
+
 * Tests
+
 `/lib/modules/$(KVER)/iCubDrivers/cfw002/LinuxDriver/tests/test_audio`
+
 where
+
 `KVER=$(shell uname -r)`
 	
 ## Usage

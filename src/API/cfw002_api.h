@@ -15,7 +15,7 @@
 #include <fcntl.h>
 #include <linux/types.h>
 #include <stdio.h>
-
+#include <sys/ioctl.h>
 
 /* An 11-bit ID can be specified in the ID field.
  * If a 29-bits ID has to be TXed, it can be specified
@@ -30,7 +30,7 @@ struct cfw002_rtx_payload {
 	__le32 id; 	/* 11-bit or 29-bit ID*/
 	__le16 len;	/* packet lenght. The 16bit type is for performace/alignment reasons */
 	__u8 data[8];	/* payload data*/
-	
+
 }  __attribute__((packed));
 
 
@@ -89,14 +89,14 @@ struct cfw002_errstate {
 static inline int cfw002_can_write(int fd, struct cfw002_rtx_header *buf, int num)
 {
 	return ioctl(fd, (CFW002_IOCTL_MAGIC<<8) | (num<<16) | CFW002_IOCTL_WRITE | ((1|2)<<30), (char*)buf);
-} 
+}
 
 static inline int cfw002_can_read(int fd, struct cfw002_rtx_header *buf, int num)
 {
 	return ioctl(fd, (CFW002_IOCTL_MAGIC<<8) | (num<<16) | CFW002_IOCTL_READ | ((1|2)<<30), (char*)buf);
 }
 
-static inline int cfw002_can_portenable(int fd, int port, int ena) 
+static inline int cfw002_can_portenable(int fd, int port, int ena)
 {
 	unsigned long arg;
 	arg = port & 0xf;
@@ -117,7 +117,7 @@ struct cfw002_filter{
 	int port;
 };
 
-static inline int cfw002_can_setfilter(int fd, int port, int extid, int mide, 
+static inline int cfw002_can_setfilter(int fd, int port, int extid, int mide,
 	unsigned long mask, unsigned long id)
 {
 	struct cfw002_filter filter;
@@ -140,7 +140,7 @@ struct cfw002_idfilter{
 	int ena;
 };
 
-static inline int cfw002_can_setidfilter(int fd, unsigned int port, unsigned int id, int ena) 
+static inline int cfw002_can_setidfilter(int fd, unsigned int port, unsigned int id, int ena)
 {
 	struct cfw002_idfilter idfilter;
 
@@ -159,7 +159,7 @@ static inline int cfw002_can_setidfilter(int fd, unsigned int port, unsigned int
 static inline int cfw002_can_getstate(int fd, __u8 port, struct cfw002_errstate *ebuf)
 {
 	*((__u8*)ebuf) = port;
-	return ioctl(fd, (CFW002_IOCTL_MAGIC<<8) | CFW002_IOCTL_GETSTATE | (2<<30), (char*)ebuf);	
+	return ioctl(fd, (CFW002_IOCTL_MAGIC<<8) | CFW002_IOCTL_GETSTATE | (2<<30), (char*)ebuf);
 }
 
 

@@ -24,10 +24,12 @@ The make script will install the following files:
 
 * API
 
-`/lib/modules/$(KVER)/iCubDrivers/cfw002/LinuxDriver/API/cfw002_api.h
+```
+/lib/modules/$(KVER)/iCubDrivers/cfw002/LinuxDriver/API/cfw002_api.h
 /lib/modules/$(KVER)/iCubDrivers/cfw002/LinuxDriver/API/libcfw002.h
 /lib/modules/$(KVER)/iCubDrivers/cfw002/LinuxDriver/API/libcfw002.so
-/usr/lib/libcfw002.so`
+/usr/lib/libcfw002.so
+```
 
 * Tests
 

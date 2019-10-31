@@ -25,6 +25,12 @@
 #include <linux/wait.h>
 #include <linux/uaccess.h>
 
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,0,0))
+#define ___access_ok(x, y, z) access_ok((y), (z))
+#else
+#define ___access_ok access_ok
+#endif
+
 #if ( LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,36) )
 	#include <linux/module.h>
 	#define IOCTL_FIELD_NAME unlocked_ioctl
@@ -800,11 +806,11 @@ int cfw002_ioctl(struct inode *inode, struct file *filep,
 			if(unlikely(num > cfw002_txdescnum))
 				return -EINVAL;
 
-			/*if(unlikely(!access_ok(VERIFY_READ | VERIFY_WRITE, buf,
+			/*if(unlikely(!___access_ok(VERIFY_READ | VERIFY_WRITE, buf,
 				(2 + num*(4+2+8)) * sizeof(char))))
 			*/
 
-			if(unlikely(!access_ok(VERIFY_READ | VERIFY_WRITE, buf,
+			if(unlikely(!___access_ok(VERIFY_READ | VERIFY_WRITE, buf,
 				 sizeof(hdr))))
 
 				return -EINVAL;
@@ -812,7 +818,7 @@ int cfw002_ioctl(struct inode *inode, struct file *filep,
 			if (__copy_from_user(&hdr,buf,sizeof(hdr)))
 				return -EFAULT;
 
-			if(unlikely(!access_ok(VERIFY_READ, hdr.bufp,
+			if(unlikely(!___access_ok(VERIFY_READ, hdr.bufp,
 				 sizeof(struct cfw002_rtxdesc)*num)))
 
 				return -EINVAL;
@@ -910,13 +916,13 @@ int cfw002_ioctl(struct inode *inode, struct file *filep,
 			if(unlikely(num > cfw002_rxdescnum))
 				return -EINVAL;
 
-			/*if(unlikely(!access_ok(VERIFY_READ | VERIFY_WRITE, buf,
+			/*if(unlikely(!___access_ok(VERIFY_READ | VERIFY_WRITE, buf,
 				(2+(4+2+8) * num) * sizeof(char))))
 				return -EINVAL;
 
 			__get_user(port,buf);*/
 
-			if(unlikely(!access_ok(VERIFY_READ | VERIFY_WRITE, buf,
+			if(unlikely(!___access_ok(VERIFY_READ | VERIFY_WRITE, buf,
 				 sizeof(hdr))))
 
 				return -EINVAL;
@@ -926,7 +932,7 @@ int cfw002_ioctl(struct inode *inode, struct file *filep,
 			block = hdr.block;
 		//	printk("read port %x num %x size %x \n",port,num, sizeof(struct cfw002_rtxdesc)*num);
 
-			if(unlikely(!access_ok(VERIFY_WRITE, hdr.bufp,
+			if(unlikely(!___access_ok(VERIFY_WRITE, hdr.bufp,
 				sizeof(struct cfw002_rtxdesc)*num)))
 
 				return -EINVAL;
@@ -1046,7 +1052,7 @@ int cfw002_ioctl(struct inode *inode, struct file *filep,
 		//	printk("stat\n");
 			buf = (char __user *)arg;
 
-			if(unlikely(!access_ok(VERIFY_READ | VERIFY_WRITE, buf,sizeof(struct cfw002_errstate))))
+			if(unlikely(!___access_ok(VERIFY_READ | VERIFY_WRITE, buf,sizeof(struct cfw002_errstate))))
 				return -EINVAL;
 
 			if (__copy_from_user(&port,buf,sizeof(u8)))
